@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ネイリストママの在宅3ヶ月プラン</title>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;500;700&family=Kiwi+Maru:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --pink: #E8729A;
+  --pink-light: #FFF0F5;
+  --pink-soft: #F9D1DD;
+  --cream: #FFF8F0;
+  --peach: #FFECD2;
+  --lavender: #F0E6FF;
+  --mint: #E8F8F0;
+  --mint-dark: #3CB371;
+  --gold: #DAA520;
+  --text: #4A3F3F;
+  --text-light: #8B7E7E;
+  --white: #FFFFFF;
+  --shadow: 0 4px 20px rgba(232, 114, 154, 0.12);
+  --shadow-hover: 0 8px 30px rgba(232, 114, 154, 0.2);
+  --radius: 20px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Zen Maru Gothic', 'Kiwi Maru', sans-serif;
+  color: var(--text);
+  background: var(--cream);
+  line-height: 1.8;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ===== HERO ===== */
+.hero {
+  min-height: 92vh;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  text-align: center; padding: 2rem;
+  background: linear-gradient(160deg, var(--pink-light) 0%, var(--cream) 40%, var(--lavender) 100%);
+  position: relative; overflow: hidden;
+}
+.hero::before {
+  content: ''; position: absolute; top: -50%; right: -30%; width: 80%; height: 80%;
+  background: radial-gradient(circle, rgba(232,114,154,0.08) 0%, transparent 70%);
+  border-radius: 50%; animation: float 8s ease-in-out infinite;
+}
+.hero::after {
+  content: ''; position: absolute; bottom: -30%; left: -20%; width: 60%; height: 60%;
+  background: radial-gradient(circle, rgba(240,230,255,0.3) 0%, transparent 70%);
+  border-radius: 50%; animation: float 10s ease-in-out infinite reverse;
+}
+@keyframes float { 0%,100%{transform:translate(0,0)} 50%{transform:translate(20px,-30px)} }
+.hero-content { position: relative; z-index: 1; }
+.hero-emoji { font-size: 3rem; margin-bottom: 1rem; animation: sparkle 2s ease-in-out infinite; }
+@keyframes sparkle { 0%,100%{transform:scale(1)} 50%{transform:scale(1.1)} }
+.hero-sub { font-family:'Kiwi Maru',serif; font-weight:300; font-size:1rem; color:var(--text-light); letter-spacing:0.1em; margin-bottom:0.5rem; }
+.hero h1 { font-size:clamp(1.8rem,5vw,2.8rem); font-weight:700; color:var(--pink); margin-bottom:1rem; line-height:1.4; }
+.hero-desc { font-size:1rem; color:var(--text-light); max-width:500px; margin:0 auto 2rem; }
+.hero-tags { display:flex; gap:0.5rem; flex-wrap:wrap; justify-content:center; margin-bottom:2rem; }
+.hero-tag { background:var(--white); padding:0.4rem 1rem; border-radius:100px; font-size:0.85rem; color:var(--pink); border:1px solid var(--pink-soft); }
+.scroll-hint { position:absolute; bottom:2rem; left:50%; transform:translateX(-50%); animation:bounce 2s infinite; color:var(--pink); font-size:0.85rem; z-index:1; }
+@keyframes bounce { 0%,100%{transform:translateX(-50%) translateY(0)} 50%{transform:translateX(-50%) translateY(8px)} }
+
+/* ===== COMMON ===== */
+.container { max-width: 720px; margin: 0 auto; padding: 0 1.2rem; }
+section { padding: 3rem 0; }
+.section-label { display:inline-block; background:var(--pink); color:white; font-size:0.75rem; font-weight:700; padding:0.3rem 0.8rem; border-radius:100px; letter-spacing:0.1em; margin-bottom:0.8rem; }
+.section-title { font-size:clamp(1.4rem,4vw,1.8rem); font-weight:700; color:var(--text); margin-bottom:0.5rem; line-height:1.4; }
+.section-desc { color:var(--text-light); font-size:0.95rem; margin-bottom:2rem; }
+
+/* ===== CARDS ===== */
+.card { background:var(--white); border-radius:var(--radius); padding:1.8rem; margin-bottom:1.2rem; box-shadow:var(--shadow); transition:transform 0.3s,box-shadow 0.3s; position:relative; overflow:hidden; }
+.card:hover { transform:translateY(-2px); box-shadow:var(--shadow-hover); }
+.card-accent { position:absolute; top:0; left:0; width:4px; height:100%; background:var(--pink); border-radius:4px 0 0 4px; }
+.card-icon { font-size:2rem; margin-bottom:0.8rem; }
+.card h3 { font-size:1.1rem; font-weight:700; margin-bottom:0.5rem; color:var(--text); }
+.card p { font-size:0.9rem; color:var(--text-light); line-height:1.7; }
+.card-highlight { margin-top:0.8rem; padding:0.6rem 1rem; background:var(--pink-light); border-radius:12px; font-size:0.9rem; font-weight:500; color:var(--pink); }
+
+/* ===== INCOME ===== */
+.income-grid { display:grid; gap:1rem; }
+.income-card { background:var(--white); border-radius:var(--radius); padding:1.5rem; box-shadow:var(--shadow); display:flex; gap:1rem; align-items:flex-start; transition:transform 0.3s; }
+.income-card:hover { transform:translateY(-2px); }
+.income-num { width:36px; height:36px; background:var(--pink); color:white; border-radius:50%; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:0.9rem; flex-shrink:0; }
+.income-body h4 { font-size:1rem; font-weight:700; margin-bottom:0.3rem; }
+.income-body p { font-size:0.85rem; color:var(--text-light); margin-bottom:0.4rem; }
+.income-amount { display:inline-block; background:var(--peach); padding:0.2rem 0.7rem; border-radius:8px; font-size:0.85rem; font-weight:700; color:#D4760A; }
+
+/* ===== TIMELINE ===== */
+.timeline { position:relative; }
+.timeline::before { content:''; position:absolute; left:20px; top:0; bottom:0; width:2px; background:linear-gradient(to bottom,var(--pink-soft),var(--lavender)); }
+.tl-item { position:relative; padding-left:52px; margin-bottom:2rem; }
+.tl-dot { position:absolute; left:11px; top:4px; width:20px; height:20px; background:var(--pink); border-radius:50%; border:3px solid var(--white); box-shadow:0 0 0 3px var(--pink-soft); }
+.tl-month { font-size:0.8rem; font-weight:700; color:var(--pink); margin-bottom:0.3rem; }
+.tl-title { font-size:1.1rem; font-weight:700; margin-bottom:0.5rem; }
+.tl-card { background:var(--white); border-radius:16px; padding:1.2rem; box-shadow:var(--shadow); }
+.tl-list { list-style:none; padding:0; }
+.tl-list li { font-size:0.9rem; padding:0.3rem 0; padding-left:1.4rem; position:relative; color:var(--text); }
+.tl-list li::before { content:'✓'; position:absolute; left:0; color:var(--pink); font-weight:700; }
+.tl-goal { margin-top:0.8rem; padding:0.6rem 1rem; background:var(--mint); border-radius:12px; font-size:0.85rem; font-weight:500; color:var(--mint-dark); }
+
+/* ===== MONEY TABLE ===== */
+.money-table { width:100%; border-collapse:separate; border-spacing:0; border-radius:16px; overflow:hidden; box-shadow:var(--shadow); margin-bottom:1.5rem; font-size:0.85rem; }
+.money-table th { background:var(--pink); color:white; padding:0.8rem 0.6rem; font-weight:500; text-align:center; }
+.money-table th:first-child { text-align:left; padding-left:1rem; }
+.money-table td { padding:0.7rem 0.6rem; text-align:center; background:var(--white); border-bottom:1px solid #f5f0f0; }
+.money-table td:first-child { text-align:left; padding-left:1rem; }
+.money-table tr:last-child td { border-bottom:none; }
+.money-table .total-row td { background:var(--pink-light); font-weight:700; color:var(--pink); font-size:0.95rem; }
+
+/* ===== COST ===== */
+.cost-item { display:flex; justify-content:space-between; align-items:center; padding:0.7rem 0; border-bottom:1px dashed #EDE0E0; font-size:0.9rem; }
+.cost-item:last-child { border-bottom:none; }
+.cost-label { color:var(--text); }
+.cost-amount { font-weight:700; color:var(--pink); }
+.cost-total { margin-top:1rem; padding:1rem; background:var(--pink-light); border-radius:12px; text-align:center; font-size:1.1rem; font-weight:700; color:var(--pink); }
+
+/* ===== COMPARE ===== */
+.compare { display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin-bottom:1.5rem; }
+.compare-card { background:var(--white); border-radius:16px; padding:1.2rem; text-align:center; box-shadow:var(--shadow); }
+.compare-card.highlight { background:linear-gradient(135deg,var(--pink),#D4628A); color:white; }
+.compare-card .label { font-size:0.75rem; font-weight:500; margin-bottom:0.3rem; opacity:0.7; }
+.compare-card .value { font-size:1.3rem; font-weight:700; }
+.compare-card.highlight .value { color:white; }
+
+/* ===== TIP BOX ===== */
+.tip-box { background:linear-gradient(135deg,var(--lavender),var(--pink-light)); border-radius:var(--radius); padding:1.5rem; margin-bottom:1.2rem; }
+.tip-box h4 { font-size:1rem; margin-bottom:0.5rem; }
+.tip-box p, .tip-box li { font-size:0.88rem; color:var(--text); line-height:1.7; }
+
+/* ===== Q&A ===== */
+.qa-item { background:var(--white); border-radius:var(--radius); margin-bottom:1rem; box-shadow:var(--shadow); overflow:hidden; }
+.qa-q { padding:1.2rem 1.5rem; font-weight:700; font-size:0.95rem; color:var(--pink); display:flex; align-items:center; gap:0.5rem; }
+.qa-q::before { content:'Q'; background:var(--pink); color:white; width:28px; height:28px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:0.8rem; flex-shrink:0; }
+.qa-a { padding:0 1.5rem 1.2rem; padding-left:calc(1.5rem + 28px + 0.5rem); font-size:0.9rem; color:var(--text-light); line-height:1.7; }
+
+/* ===== STEP GUIDE ===== */
+.step-guide { counter-reset: step; }
+.step-item { background:var(--white); border-radius:var(--radius); padding:1.5rem; margin-bottom:1rem; box-shadow:var(--shadow); position:relative; padding-left:4.5rem; }
+.step-item::before { counter-increment:step; content:'STEP ' counter(step); position:absolute; left:1.2rem; top:1.5rem; font-size:0.7rem; font-weight:700; color:var(--pink); letter-spacing:0.05em; }
+.step-item h4 { font-size:1rem; font-weight:700; margin-bottom:0.3rem; }
+.step-item p { font-size:0.88rem; color:var(--text-light); line-height:1.7; }
+
+/* ===== REASSURE ===== */
+.reassure-box {
+  background: var(--white); border-radius: var(--radius); padding: 2rem;
+  box-shadow: var(--shadow); text-align: center; margin-bottom: 1.5rem;
+  border: 2px dashed var(--pink-soft);
+}
+.reassure-box .big-emoji { font-size: 2.5rem; margin-bottom: 0.8rem; }
+.reassure-box h3 { font-size: 1.2rem; color: var(--pink); margin-bottom: 0.5rem; }
+.reassure-box p { font-size: 0.9rem; color: var(--text-light); max-width: 480px; margin: 0 auto; }
+
+/* ===== FINAL ===== */
+.final-message { text-align:center; padding:3rem 1.5rem; background:linear-gradient(160deg,var(--pink-light),var(--cream),var(--lavender)); border-radius:var(--radius); margin:2rem 0; }
+.final-message .emoji { font-size:2.5rem; margin-bottom:1rem; }
+.final-message h2 { font-size:1.4rem; color:var(--pink); margin-bottom:1rem; line-height:1.5; }
+.final-message p { font-size:0.95rem; color:var(--text-light); max-width:500px; margin:0 auto; line-height:1.8; }
+
+footer { text-align:center; padding:2rem; font-size:0.8rem; color:var(--text-light); }
+
+/* ===== ANIMATIONS ===== */
+.fade-in { opacity:0; transform:translateY(20px); transition:opacity 0.6s ease,transform 0.6s ease; }
+.fade-in.visible { opacity:1; transform:translateY(0); }
+
+@media (max-width:600px) {
+  .compare { grid-template-columns:1fr; }
+  .hero { min-height:80vh; }
+  .money-table { font-size:0.75rem; }
+  .money-table th,.money-table td { padding:0.5rem 0.4rem; }
+  .step-item { padding-left:1.2rem; padding-top:2.5rem; }
+  .step-item::before { top:1rem; left:1.2rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- ===== HERO ===== -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-emoji">💅✨</div>
+    <p class="hero-sub">赤ちゃんと一緒に、おうちでスタート</p>
+    <h1>ネイリストママの<br>在宅3ヶ月プラン</h1>
+    <p class="hero-desc">引っ越し前の今だからこそできる準備があります。<br>あなたのネイルスキルを「持ち運べる収入」に変えましょう。</p>
+    <div class="hero-tags">
+      <span class="hero-tag">👶 赤ちゃんがいてもOK</span>
+      <span class="hero-tag">🏠 引っ越しても続けられる</span>
+      <span class="hero-tag">💰 初期費用1.5万円だけ</span>
+    </div>
+  </div>
+  <div class="scroll-hint">↓ スクロールしてね</div>
+</section>
+
+<!-- ===== まず安心して ===== -->
+<section>
+  <div class="container">
+    <div class="fade-in">
+      <span class="section-label">FIRST</span>
+      <h2 class="section-title">まず、安心してほしいこと</h2>
+    </div>
+
+    <div class="reassure-box fade-in">
+      <div class="big-emoji">🌷</div>
+      <h3>もし全然ダメでも、失うのは15,000円だけ。</h3>
+      <p>在庫を何十万円も抱えるビジネスとは全然違います。お店を借りるわけでもないし、誰かに迷惑がかかるわけでもない。<br><br>うまくいかなかったら、やめればいい。それだけのこと。<br>だから気楽にやってみましょう。</p>
+    </div>
+
+    <div class="card fade-in">
+      <div class="card-accent"></div>
+      <div class="card-icon">🎯</div>
+      <h3>あなたには「プロの技術」がある</h3>
+      <p>ネイルサロンで働いていた経験は、想像以上に大きな武器です。ネットでネイルチップを売っている人の多くは趣味で始めた人。あなたはスタート地点がまったく違います。</p>
+    </div>
+
+    <div class="card fade-in">
+      <div class="card-accent"></div>
+      <div class="card-icon">📦</div>
+      <h3>引っ越しても持ち運べるビジネス</h3>
+      <p>オンライン販売だからお客さんは全国。引っ越ししても関係ありません。今のうちにSNSのフォロワーや販売実績を作っておけば、引っ越し先でサロンを再開する時にゼロからじゃなくなります。</p>
+    </div>
+
+    <div class="card fade-in">
+      <div class="card-accent"></div>
+      <div class="card-icon">⏰</div>
+      <h3>1日1〜2時間でOK</h3>
+      <p>赤ちゃんのお昼寝中や、夜寝かしつけた後でOK。「今日は疲れたからやめとこ」も全然アリ。ネット販売はお店と違って、お休みしてもお客さんに迷惑がかかりません。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 不安解消Q&A ===== -->
+<section style="background:var(--white); padding:3rem 0;">
+  <div class="container">
+    <div class="fade-in">
+      <span class="section-label">Q&A</span>
+      <h2 class="section-title">「でも…」と思ったあなたへ</h2>
+      <p class="section-desc">よくある不安に先にお答えしますね。</p>
+    </div>
+
+    <div class="qa-item fade-in">
+      <div class="qa-q">メルカリだとネイルチップ900円とかで売ってるけど…？</div>
+      <div class="qa-a">
+        メルカリの¥900チップは「趣味で作った人」の世界。あなたが戦う場所はそこじゃありません。<br><br>
+        <strong>minneやCreemaでは、プロが作ったチップが¥3,000〜5,000で普通に売れています。</strong>ブライダルや成人式向けなら¥7,000〜10,000も。<br><br>
+        「元ネイルサロン勤務のプロが、あなたの爪のサイズに合わせて1つずつ手作り」<br>
+        …これ、¥900のチップとは全然べつの商品ですよね？<br><br>
+        買う側も「安いから」じゃなく「プロにちゃんと作ってほしいから」で選びます。だから価格で勝負しなくて大丈夫です。
+      </div>
+    </div>
+
+    <div class="qa-item fade-in">
+      <div class="qa-q">ネット販売なんてやったことないけど…</div>
+      <div class="qa-a">
+        大丈夫です。minne・メルカリ・BASEは全部スマホだけでできます。やることは「写真を撮る」「説明を書く」「売れたら発送する」の3つだけ。<br><br>
+        メルカリでいらないモノを売った経験があれば、もうほぼ同じです。なくても、スマホが使える人なら問題ありません。最初は1つ出品してみるだけでOK。
+      </div>
+    </div>
+
+    <div class="qa-item fade-in">
+      <div class="qa-q">赤ちゃんがいて本当にできる？</div>
+      <div class="qa-a">
+        実際にネイルチップ販売をしている子育てママさんはたくさんいます。お昼寝中に1〜2時間コツコツ作って、月3〜5万円稼いでいる方も。<br><br>
+        あなたはプロの技術がある分、同じ時間でもっと質の高いチップが作れます。納期は「1週間以内にお届け」と余裕をもって設定すれば、赤ちゃん優先で大丈夫。
+      </div>
+    </div>
+
+    <div class="qa-item fade-in">
+      <div class="qa-q">売れなかったらどうしよう…</div>
+      <div class="qa-a">
+        最初の1〜2週間は売れなくて当たり前。みんなそこからスタートしてます。<br><br>
+        でも、失うのは最大でも15,000円。お店を借りるわけでも、何十万も使うわけでもありません。もしうまくいかなかったとしても、「やってみた」という経験と、SNSに投稿したコンテンツはちゃんと残ります。<br><br>
+        <strong>やらなかった後悔より、やってみた15,000円。</strong>
+      </div>
+    </div>
+
+    <div class="qa-item fade-in">
+      <div class="qa-q">確定申告とか必要？</div>
+      <div class="qa-a">
+        年間の利益（売上 − 経費）が20万円を超えなければ不要です。まずは始めてみて、軌道に乗ってきたら考えれば大丈夫。材料費のレシートだけは念のため取っておきましょう。
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== はじめ方ガイド ===== -->
+<section>
+  <div class="container">
+    <div class="fade-in">
+      <span class="section-label">START GUIDE</span>
+      <h2 class="section-title">ネット販売のはじめ方</h2>
+      <p class="section-desc">むずかしく考えなくてOK。この順番でやるだけです。</p>
+    </div>
+
+    <div class="step-guide">
+      <div class="step-item fade-in">
+        <h4>📱 アプリを入れて登録する</h4>
+        <p>まずは<strong>minne</strong>と<strong>メルカリ</strong>の2つでOK。どちらも無料で、スマホから5分で登録できます。プロフィールは後から変えられるので、考えすぎずにまず作っちゃいましょう。</p>
+      </div>
+      <div class="step-item fade-in">
+        <h4>💅 チップを5個くらい作る</h4>
+        <p>最初は得意なデザインで5セットくらい。完璧じゃなくて大丈夫。「あなたが普通に作るレベル」がもう他の人より上です。</p>
+      </div>
+      <div class="step-item fade-in">
+        <h4>📸 写真を撮る</h4>
+        <p>窓ぎわの自然光で、白い紙の上にチップを並べて撮るだけ。それだけでキレイに撮れます。手に付けた写真もあるとグッと売れやすくなります。</p>
+      </div>
+      <div class="step-item fade-in">
+        <h4>✏️ 説明を書いて出品する</h4>
+        <p>写真をアップして、デザインの説明・サイズ・素材・発送日数を書くだけ。他の人の出品ページを参考にすればカンタンです。</p>
+      </div>
+      <div class="step-item fade-in">
+        <h4>🎉 出品ボタンをポチッ！</h4>
+        <p>これで完了！あとは売れるのを待つだけ。SNSで「出品しました」と投稿すると、見てもらえる確率がグンと上がります。</p>
+      </div>
+    </div>
+
+    <div class="tip-box fade-in">
+      <h4>🔰 ネット販売は「メルカリでモノを売る」のとほぼ同じ</h4>
+      <p>写真を撮って、説明を書いて、売れたら梱包して発送。やることはフリマアプリとまったく一緒です。特別なスキルはいりません。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 5つの収入源 ===== -->
+<section style="background:var(--white); padding:3rem 0;">
+  <div class="container">
+    <div class="fade-in">
+      <span class="section-label">INCOME</span>
+      <h2 class="section-title">ネイルの技術でお金を稼ぐ方法は<br>チップ販売だけじゃない</h2>
+      <p class="section-desc">全部いっぺんにやらなくてOK。<br>まずは①から始めて、余裕が出たら増やしていきましょう。</p>
+    </div>
+
+    <div class="income-grid">
+      <div class="income-card fade-in">
+        <div class="income-num">1</div>
+        <div class="income-body">
+          <h4>💅 オーダーメイドネイルチップ販売</h4>
+          <p>メインの収入源。プロが作るオーダーチップは¥4,000〜8,000。結婚式や成人式向けは¥10,000超えも。</p>
+          <span class="income-amount">月 ¥70,000〜120,000</span>
+        </div>
+      </div>
+      <div class="income-card fade-in">
+        <div class="income-num">2</div>
+        <div class="income-body">
+          <h4>📱 セルフネイル オンラインレッスン</h4>
+          <p>Zoomで1対1のレッスン。「プロに教えてもらいたい」需要は大きい。追加コストほぼゼロ。</p>
+          <span class="income-amount">月 ¥12,000〜40,000</span>
+        </div>
+      </div>
+      <div class="income-card fade-in">
+        <div class="income-num">3</div>
+        <div class="income-body">
+          <h4>🏪 ネイルチップ専門サイトに登録</h4>
+          <p>ミチネイル等に登録すると梱包・発送・接客は運営がやってくれる。作ることだけに集中できます。</p>
+          <span class="income-amount">月 ¥10,000〜30,000</span>
+        </div>
+      </div>
+      <div class="income-card fade-in">
+        <div class="income-num">4</div>
+        <div class="income-body">
+          <h4>🛍️ アフィリエイト（ネイル用品紹介）</h4>
+          <p>Instagramで愛用のネイル用品を紹介するだけ。楽天ROOMで紹介報酬がもらえます。</p>
+          <span class="income-amount">月 ¥3,000〜10,000</span>
+        </div>
+      </div>
+      <div class="income-card fade-in">
+        <div class="income-num">5</div>
+        <div class="income-body">
+          <h4>🎨 デジタル素材販売</h4>
+          <p>デザイン集をPDFで販売。一度作れば在庫いらずの「寝てる間も売れる」商品に。</p>
+          <span class="income-amount">月 ¥5,000〜15,000</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 高く売れる理由 ===== -->
+<section>
+  <div class="container">
+    <div class="fade-in">
+      <span class="section-label">PRICING</span>
+      <h2 class="section-title">¥900じゃなくて<br>¥4,000〜で売れる理由</h2>
+      <p class="section-desc">「安くしないと売れないのでは？」は間違い。<br>買う人が見ているのは値段だけじゃありません。</p>
+    </div>
+
+    <div class="card fade-in">
+      <div class="card-accent"></div>
+      <h3>🏥 「普段ネイルできない人」が買う</h3>
+      <p>看護師さん、保育士さん、介護士さん、飲食店の人…。普段はネイル禁止だけど「休みの日だけ楽しみたい」人がネイルチップの主なお客さん。この人たちが求めるのは「安さ」じゃなくて「プロのクオリティ」です。</p>
+    </div>
+
+    <div class="card fade-in">
+      <div class="card-accent"></div>
+      <h3>💍 イベント需要は高単価チャンス</h3>
+      <p>結婚式、成人式、卒業式、デート…「特別な日だからちゃんとしたい」。こういう時、¥900のチップを選ぶ人はいません。¥5,000〜10,000でもプロ品質なら喜んで買ってもらえます。</p>
+      <div class="card-highlight">💒 ブライダルネイルは一年中ニーズがあって、いちばんの高単価チャンスです</div>
+    </div>
+
+    <div class="card fade-in">
+      <div class="card-accent"></div>
+      <h3>📐 サイズ合わせが決め手になる</h3>
+      <p>ネイルチップの最大の悩みは「サイズが合わない」こと。事前にサイズ確認キットを無料で送ってあげるだけで「この人から買いたい」になります。これは趣味で売ってる人にはなかなかできないサービスです。</p>
+    </div>
+
+    <div class="card fade-in">
+      <div class="card-accent"></div>
+      <h3>🎀 「開けた瞬間うれしい」が口コミになる</h3>
+      <p>手書きのサンキューカード、かわいいリボン、次回10%OFFクーポン。ちょっとした工夫で「また買いたい」「友達にも教えたい」が生まれます。これがリピーターとSNS口コミのもとになります。</p>
+    </div>
+
+    <div class="tip-box fade-in">
+      <h4>💸 手数料をだんだん安くするワザ</h4>
+      <p>① 最初はminne・メルカリで実績づくり（手数料 約10%）<br>
+      → ② 慣れたらBASEに移行（手数料 6.6%）<br>
+      → ③ リピーターさんにはInstagram直販（手数料 ほぼ0%）<br><br>
+      同じ¥5,000のチップでも、手元に残るお金が<strong>¥500以上</strong>変わります。<br>あせらず、少しずつ移行すればOKです。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== コスト ===== -->
+<section style="background:var(--white); padding:3rem 0;">
+  <div class="container">
+    <div class="fade-in">
+      <span class="section-label">COST</span>
+      <h2 class="section-title">かかるお金はこれだけ</h2>
+      <p class="section-desc">基本のネイル道具は持っている前提です。</p>
+    </div>
+
+    <div class="card fade-in">
+      <h3>🛒 最初にかかるお金</h3>
+      <div class="cost-item"><span class="cost-label">材料の補充（ジェル・パーツ）</span><span class="cost-amount">¥5,000</span></div>
+      <div class="cost-item"><span class="cost-label">ベースチップ まとめ買い</span><span class="cost-amount">¥2,000</span></div>
+      <div class="cost-item"><span class="cost-label">キレイなケース 30個</span><span class="cost-amount">¥2,500</span></div>
+      <div class="cost-item"><span class="cost-label">撮影用ライト + 背景紙</span><span class="cost-amount">¥2,000</span></div>
+      <div class="cost-item"><span class="cost-label">サイズ確認キット</span><span class="cost-amount">¥2,000</span></div>
+      <div class="cost-item"><span class="cost-label">サンキューカード印刷</span><span class="cost-amount">¥1,500</span></div>
+      <div class="cost-total">合計：約 ¥15,000</div>
+      <p style="text-align:center; margin-top:0.8rem; font-size:0.85rem; color:var(--text-light);">チップが3〜4セット売れれば回収できる金額です 😊</p>
+    </div>
+
+    <div class="card fade-in">
+      <h3>📅 毎月かかるお金（月20セット作る場合）</h3>
+      <div class="cost-item"><span class="cost-label">材料費（ジェル・パーツ）</span><span class="cost-amount">¥5,000</span></div>
+      <div class="cost-item"><span class="cost-label">チップ・ケース・シール</span><span class="cost-amount">¥3,000</span></div>
+      <div class="cost-item"><span class="cost-label">梱包材・送料</span><span class="cost-amount">¥3,000</span></div>
+      <div class="cost-item"><span class="cost-label">通信費・アプリ</span><span class="cost-amount">¥0</span></div>
+      <div class="cost-total">月のコスト：約 ¥11,000</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 収益シミュレーション ===== -->
+<section>
+  <div class="container">
+    <div class="fade-in">
+      <span class="section-label">MONEY</span>
+      <h2 class="section-title">3ヶ月でどのくらい稼げる？</h2>
+      <p class="section-desc">最初は少なくて大丈夫。2ヶ月目からグッと伸びます。</p>
+    </div>
+
+    <div class="fade-in">
+      <table class="money-table">
+        <thead><tr><th>収入源</th><th>1ヶ月目</th><th>2ヶ月目</th><th>3ヶ月目</th></tr></thead>
+        <tbody>
+          <tr><td>💅 チップ販売</td><td>¥15,000〜<br>30,000</td><td>¥45,000〜<br>80,000</td><td>¥70,000〜<br>120,000</td></tr>
+          <tr><td>📱 レッスン</td><td>—</td><td>¥6,000〜<br>10,000</td><td>¥12,000〜<br>30,000</td></tr>
+          <tr><td>🏪 専門サイト</td><td>—</td><td>準備中</td><td>¥10,000〜<br>20,000</td></tr>
+          <tr><td>🛍 アフィリエイト</td><td>¥500〜<br>1,000</td><td>¥2,000〜<br>5,000</td><td>¥3,000〜<br>10,000</td></tr>
+          <tr><td>🎨 デジタル素材</td><td>—</td><td>¥1,000〜<br>3,000</td><td>¥5,000〜<br>10,000</td></tr>
+          <tr><td>📉 経費</td><td>−¥7,000</td><td>−¥15,000</td><td>−¥20,000</td></tr>
+          <tr class="total-row"><td>✨ 手取り</td><td>¥8,500〜<br>24,000</td><td>¥39,000〜<br>83,000</td><td>¥80,000〜<br>170,000</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="compare fade-in">
+      <div class="compare-card">
+        <div class="label">3ヶ月のトータル手取り</div>
+        <div class="value" style="color:var(--pink);">¥127,500〜<br>277,000</div>
+      </div>
+      <div class="compare-card highlight">
+        <div class="label">3ヶ月目の月収</div>
+        <div class="value">¥80,000〜<br>170,000</div>
+      </div>
+    </div>
+
+    <div class="tip-box fade-in">
+      <h4>📌 まずは「月1万円」から</h4>
+      <p>いきなり大きな数字を目指さなくて大丈夫です。趣味で始めた主婦の方でも月3〜5万円を達成している事例はたくさんあります。あなたはプロの経験者だからスタート地点が違う。<br><br>まずは「月1万円」。それができたら「月3万円」。小さく始めて、少しずつ育てていきましょう。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== ロードマップ ===== -->
+<section style="background:var(--white); padding:3rem 0;">
+  <div class="container">
+    <div class="fade-in">
+      <span class="section-label">ROADMAP</span>
+      <h2 class="section-title">3ヶ月の進め方</h2>
+      <p class="section-desc">焦らなくて大丈夫。この順番で進めていくだけです。</p>
+    </div>
+
+    <div class="timeline">
+      <div class="tl-item fade-in">
+        <div class="tl-dot"></div>
+        <div class="tl-month">1ヶ月目</div>
+        <div class="tl-title">🌱 準備して、最初の1個を売ろう</div>
+        <div class="tl-card">
+          <ul class="tl-list">
+            <li>minne + メルカリに登録する（無料・スマホでOK）</li>
+            <li>Instagram専用アカウントを作る</li>
+            <li>得意なデザインでチップを5〜8セット作る</li>
+            <li>窓ぎわの自然光でキレイに写真を撮る</li>
+            <li>各サイトに出品！最初は¥1,500〜2,000でレビュー集め</li>
+            <li>作ってる様子のショート動画をSNSに投稿</li>
+            <li>楽天ROOMに登録して愛用品を紹介</li>
+          </ul>
+          <div class="tl-goal">🎯 まずここ → 「1個売れた！」を体験する</div>
+        </div>
+      </div>
+
+      <div class="tl-item fade-in">
+        <div class="tl-dot" style="background:var(--gold);box-shadow:0 0 0 3px #FFF5D6;"></div>
+        <div class="tl-month" style="color:var(--gold);">2ヶ月目</div>
+        <div class="tl-title">🌿 売れるようになってきた！広げよう</div>
+        <div class="tl-card">
+          <ul class="tl-list">
+            <li>オーダーメイド受注を始める（DMやBASEで）</li>
+            <li>結婚式・イベント向けデザインを告知</li>
+            <li>オンラインレッスンを試しに2回やってみる</li>
+            <li>レビューをSNSでシェアして信頼度UP</li>
+            <li>ミチネイルなどの専門サイトに応募</li>
+            <li>BASEで自分のショップを作る（手数料が安い）</li>
+          </ul>
+          <div class="tl-goal">🎯 ここまで来たら → リピーターが2〜3人つく</div>
+        </div>
+      </div>
+
+      <div class="tl-item fade-in">
+        <div class="tl-dot" style="background:var(--mint-dark);box-shadow:0 0 0 3px #D4F5E0;"></div>
+        <div class="tl-month" style="color:var(--mint-dark);">3ヶ月目</div>
+        <div class="tl-title">🌸 安定してきた＋引っ越し準備</div>
+        <div class="tl-card">
+          <ul class="tl-list">
+            <li>売れ筋デザインをパターン化して効率UP</li>
+            <li>リピーターさん向けの定額プランを検討</li>
+            <li>引っ越し先エリアのハッシュタグでSNS発信</li>
+            <li>「引っ越し先でサロンOPEN予定！」と告知</li>
+            <li>チップ販売 + レッスン + アフィリエイトの3本柱に</li>
+          </ul>
+          <div class="tl-goal">🎯 ここまで来たら → 引っ越し先でもゼロからじゃない</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SNSのコツ ===== -->
+<section>
+  <div class="container">
+    <div class="fade-in">
+      <span class="section-label">SNS</span>
+      <h2 class="section-title">SNSは「映え」より「共感」</h2>
+      <p class="section-desc">完璧な投稿じゃなくて大丈夫。<br>「ママネイリストのリアル」がいちばん共感されます。</p>
+    </div>
+
+    <div class="card fade-in">
+      <h3>📱 投稿するのはこんなこと</h3>
+      <p>
+        <strong>・チップ作ってる手元の動画</strong>（TikTok・リールでバズりやすい）<br>
+        <strong>・ビフォーアフター</strong>（素の爪→チップ装着の写真）<br>
+        <strong>・日常のひとコマ</strong>（「お昼寝中に2セット完成！」とか）<br>
+        <strong>・お客さんのレビュー紹介</strong>（信頼度アップ）<br><br>
+        TikTokはフォロワー0でもバズる可能性があるのが最大のメリット。<br>
+        投稿は<strong>夜21〜22時</strong>がママ層のゴールデンタイムです。
+      </p>
+    </div>
+
+    <div class="tip-box fade-in">
+      <h4>💬 「ネイリストママ」は最強のブランド</h4>
+      <p>同じ世代の20〜30代ママに響きます。「赤ちゃんがお昼寝してる間に作りました」のストーリーは共感の嵐。子育てしながら好きなことで稼いでいる姿は、フォロワーさんの励みにもなります。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 赤ちゃんとの両立 ===== -->
+<section style="background:var(--white); padding:3rem 0;">
+  <div class="container">
+    <div class="fade-in">
+      <span class="section-label">BABY & WORK</span>
+      <h2 class="section-title">赤ちゃんとの両立のコツ</h2>
+    </div>
+
+    <div class="card fade-in">
+      <p>
+        👶 ジェルの硬化中（ライト照射中）に赤ちゃんを見れるよう、作業場所を工夫<br><br>
+        🔒 材料は赤ちゃんの手が届かない場所に（特にジェル・アセトン類）<br><br>
+        📅 納期は「お届けまで1週間」と余裕をもって。急ぎの注文は無理に受けない<br><br>
+        ☕ 1日1〜2時間でOK。今日はしんどいな…と思ったら休む日にしていい<br><br>
+        💪 完璧を目指さない。<strong>「続けること」がいちばん大事</strong>
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 最後のメッセージ ===== -->
+<section>
+  <div class="container">
+    <div class="reassure-box fade-in">
+      <div class="big-emoji">🤝</div>
+      <h3>最悪うまくいかなくても、<br>失うのは¥15,000だけ。</h3>
+      <p>でも、うまくいったら。<br>引っ越し先で笑顔でサロンを開く日が、ぐっと近づきます。</p>
+    </div>
+
+    <div class="final-message fade-in">
+      <div class="emoji">🌷</div>
+      <h2>赤ちゃんのお昼寝中に、<br>未来の自分を助ける準備をしよう。</h2>
+      <p>
+        今の3ヶ月で作るSNSのフォロワーも、販売実績も、お客さんとのつながりも。<br>
+        ぜんぶ「持ち運べる資産」です。<br><br>
+        引っ越し先でサロンを開くとき、<br>
+        もうゼロからのスタートじゃない。<br><br>
+        焦らず、赤ちゃんとの時間を大切にしながら。<br>
+        まずは1個、出品してみるところから。<br><br>
+        <strong>やってみよう。きっと大丈夫。</strong>
+      </p>
+    </div>
+  </div>
+</section>
+
+<div style="text-align:center; padding:2rem 1rem 1rem;">
+  <button id="downloadBtn" style="
+    background: linear-gradient(135deg, var(--pink), #D4628A);
+    color: white; border: none; padding: 1rem 2.5rem;
+    border-radius: 100px; font-family: 'Zen Maru Gothic', sans-serif;
+    font-size: 1rem; font-weight: 700; cursor: pointer;
+    box-shadow: 0 4px 15px rgba(232,114,154,0.3);
+    transition: transform 0.2s, box-shadow 0.2s;
+  " onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 6px 20px rgba(232,114,154,0.4)'"
+     onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='0 4px 15px rgba(232,114,154,0.3)'"
+  >📥 このページをHTMLでダウンロード</button>
+</div>
+
+<footer>
+  <p>このプランは個人の状況に合わせてカスタマイズしてください。<br>収益は目安であり、結果を保証するものではありません。</p>
+</footer>
+
+<script>
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) entry.target.classList.add('visible');
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+const dlBtn = document.getElementById('downloadBtn');
+const dlWrap = dlBtn.parentElement;
+dlBtn.addEventListener('click', function() {
+  dlWrap.style.display = 'none';
+  const html = document.documentElement.outerHTML;
+  const blob = new Blob(['<!DOCTYPE html>\n' + html], { type: 'text/html; charset=utf-8' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'nail-mama-plan.html';
+  a.click();
+  URL.revokeObjectURL(url);
+});
+</script>
+</body>
+</html>
