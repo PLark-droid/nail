@@ -634,19 +634,6 @@ footer { text-align:center; padding:2rem; font-size:0.8rem; color:var(--text-lig
   </div>
 </section>
 
-<div style="text-align:center; padding:2rem 1rem 1rem;">
-  <button id="downloadBtn" style="
-    background: linear-gradient(135deg, var(--pink), #D4628A);
-    color: white; border: none; padding: 1rem 2.5rem;
-    border-radius: 100px; font-family: 'Zen Maru Gothic', sans-serif;
-    font-size: 1rem; font-weight: 700; cursor: pointer;
-    box-shadow: 0 4px 15px rgba(232,114,154,0.3);
-    transition: transform 0.2s, box-shadow 0.2s;
-  " onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 6px 20px rgba(232,114,154,0.4)'"
-     onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='0 4px 15px rgba(232,114,154,0.3)'"
-  >📥 このページをHTMLでダウンロード</button>
-</div>
-
 <footer>
   <p>このプランは個人の状況に合わせてカスタマイズしてください。<br>収益は目安であり、結果を保証するものではありません。</p>
 </footer>
@@ -658,20 +645,6 @@ const observer = new IntersectionObserver((entries) => {
   });
 }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
 document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
-
-const dlBtn = document.getElementById('downloadBtn');
-const dlWrap = dlBtn.parentElement;
-dlBtn.addEventListener('click', function() {
-  dlWrap.style.display = 'none';
-  const html = document.documentElement.outerHTML;
-  const blob = new Blob(['<!DOCTYPE html>\n' + html], { type: 'text/html; charset=utf-8' });
-  const url = URL.createObjectURL(blob);
-  const a = document.createElement('a');
-  a.href = url;
-  a.download = 'nail-mama-plan.html';
-  a.click();
-  URL.revokeObjectURL(url);
-});
 </script>
 </body>
 </html>
